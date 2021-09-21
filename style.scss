@@ -1,0 +1,359 @@
+// Déclarer les variables font 
+$font-family : 'DM Sans', sans-serif;
+$border-color : #C4C4C4;
+$color-titre-h1 : #901C1C;
+$color-tritre-h2:#D3573C;
+$background-color : #901C1C;
+$color-price : #757575;
+$background-color-photograph-section : #FAFAFA;
+$background-color-aside :#DB8876;
+
+
+
+@mixin primaire_foncé{
+    background-color: #901C1C;
+    color: white;
+}
+
+@mixin primaire_clair{
+    background-color: #D3573C;
+    color: black;
+}
+
+@mixin secondaire_foncé {
+    background-color: #D3573C;
+    color: black;
+}
+
+@mixin secondaire_grey{
+    background-color: #FAFAFA;
+    color: #525252;
+}
+
+@mixin secondaire_clair{
+    color: #901C1C;
+}
+
+// Enlever les marges et padding sur le body et appliquer la font
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+body{
+    padding-top: 44px;
+    font-family: $font-family;
+    width : 100vw;
+}
+
+// Style du header 
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+        &__logo{
+            width : 200px;
+        }
+        &__liste{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+    }
+}
+
+// Element bouton "specialité"
+
+.btn__speciality{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border : 0px 2.5px 0px;
+    height: 22px;
+    font-size: 12px;
+    list-style-type: none;
+    border: solid;
+    border-radius: 11px;
+    border-width: 0.5px;
+    border-color: $border-color;
+    margin: 0px 2.5px 0px 2.5px;
+    padding: 0px;
+        &:hover{
+            background-color: $background-color;
+        }
+        &:hover a{
+            color : white;
+        }
+        & a {
+            text-decoration: none;
+            @include secondaire_clair;
+            margin: 3px 7px;
+        }
+}
+
+// Configurer la section "main"
+
+.main{
+    padding-top: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+// Element h1
+.titre_h1{
+    position: absolute;
+    top : 44px;
+    right : 0;
+    width: 30%;
+    text-align: center;
+    font-family: $font-family;
+    font-size: 36px;
+    font-weight: 400;
+    color : $color-titre-h1;
+}
+
+// Element "Profile"
+
+.profile{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    align-items: center;
+    padding: 24px 12px;
+    margin: auto;
+        & div{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        &__link{
+            text-decoration: none;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        &__img{
+            width: 200px;
+            height:200px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        &__name{
+            font-size: 36px;
+            color: $color-tritre-h2;
+            font-weight: 400;
+        }
+        &__location{
+            color: $color-titre-h1;
+            font-size: 13px;
+        }
+        &__intro{
+            font-size: 10px;;
+        }
+        &__price{
+            color: $color-price;
+            font-size: 9px;
+        }
+        &__skills{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+}
+
+
+
+// PAGE HTML "PROFILE"
+
+.second-body{
+    padding-top: 44px;
+    font-family: $font-family;
+    width : 100vw;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.contact-me{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    &__btn{
+        width:170px;
+        height: 69px;
+        font-size: 20px;
+        font-weight: 700;
+        border: none;
+        border-radius: 5px;
+        background-color: $background-color;
+        color: white;
+    }
+}
+
+.sortby{
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.navigation-filter{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 9px;
+}
+
+.list{
+    list-style-type: none;
+    font-size: 18px;
+    font-weight: 700px;
+    padding-left: 5px;
+    border-radius: 5px;
+    &__link--popular{
+        display: block;
+        text-decoration: none;
+        text-align:left;
+        color: white;
+        background-color: $background-color;
+        font-size: 18px;
+        padding: 5px;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+    &__link--date{
+        display: block;
+        text-decoration: none;
+        text-align: left;
+        color: white;
+        background-color: $background-color;
+        font-size: 18px;
+        padding: 5px;
+        border-top: solid;
+        border-bottom: solid;
+        border-width: 1px;
+    }
+    &__link--title{
+        display: block;
+        text-decoration: none;
+        text-align: left;
+        color: white;
+        background-color: $background-color;
+        font-size: 18px;
+        padding: 5px;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+}
+
+#filter-popular{
+    border-radius: 5px;
+}
+
+#down{
+    display: none;
+}
+
+.profile-section{
+    background-color: $background-color-photograph-section;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    padding-top: 63px;
+    padding-bottom: 63px;
+}
+
+.presentation{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.photograph-content{
+    display: none;
+}
+
+.profil-pic{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.counter{
+    position: fixed;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 34px;
+    bottom: 0;
+    right: 36px;
+    background-color: $background-color-aside;
+    height: 68px;
+    width : 340px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    color:#000000;
+    font-weight: 500;
+    font-size: 24px;    
+}
+
+.pictures{
+    padding-top : 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    &__media{
+        margin-bottom: 30px;
+    }
+    &__pics{
+        width : 350px;
+        height: 300px;
+        border-radius: 5px;
+        object-fit: cover; 
+    }
+    &__description{
+        padding-top: 10px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__title{
+        font-weight: 400;
+        font-size: 24px;
+        color: $color-titre-h1;
+    }
+    &__number{
+        font-weight: 500;
+        font-size: 24px;
+        color: $color-titre-h1;
+
+    }
+}
+
+.photographs-id{
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+
+
