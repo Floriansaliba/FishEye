@@ -1,37 +1,45 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FishEye</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
-    <script type ="module"> import './main.js' </script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body class="main-body">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" defer>
+      import "./main.js";
+    </script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body class="main-body">
     <div class="main-content">
-    <header class="header">
-        <img class="header__logo" src="logo.png" alt="Logo de FishEye">
-        <nav class="header__nav">
-            <ul class="header__liste">
-                <li class="btn__speciality"><a href="#">#Portrait</a></li>
-                <li class="btn__speciality"><a href="#">#Art</a></li>
-                <li class="btn__speciality"><a href="#">#Fashion</a></li>
-                <li class="btn__speciality"><a href="#">#Architecture</a></li>
-                <li class="btn__speciality"><a href="#">#Travel</a></li>
-                <li class="btn__speciality"><a href="#">#Sport</a></li>
-                <li class="btn__speciality"><a href="#">#Animals</a></li>
-                <li class="btn__speciality"><a href="#">#Events</a></li>
-            </ul>
+      <header class="header">
+        <img class="header__logo" src="logo.png" alt="Logo de FishEye" />
+        <nav class="header__nav" aria-label="Navigation par tag">
+          <ul class="header__liste">
+            <li class="btn__speciality" role="button">#Portrait</li>
+            <li class="btn__speciality" role="button">#Art</li>
+            <li class="btn__speciality" role="button">#Fashion</li>
+            <li class="btn__speciality" role="button">#Architecture</li>
+            <li class="btn__speciality" role="button">#Travel</li>
+            <li class="btn__speciality" role="button">#Sport</li>
+            <li class="btn__speciality" role="button">#Animals</li>
+            <li class="btn__speciality" role="button">#Events</li>
+          </ul>
         </nav>
-    </header>
-
-    <section class="main">
-        <h1 class="titre_h1">Nos photographes</h1>
-    </section>
+      </header>
+      <section class="main"></section>
     </div>
-</body>
+  </body>
 </html>
