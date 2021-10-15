@@ -56,6 +56,8 @@ body {
   width: 70%;
   &__logo {
     width: 200px;
+    position: relative;
+    left: -33px;
   }
   &__liste {
     display: flex;
@@ -89,6 +91,10 @@ body {
     background-color: $background-color;
     color: white;
   }
+}
+
+#logo1 {
+  left: 0px;
 }
 
 // Configurer la section "main"
@@ -146,18 +152,39 @@ body {
     height: 200px;
     object-fit: cover;
     border-radius: 50%;
+    &--photograph {
+      position: absolute;
+      top: 56.5px;
+      right: 30px;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+    }
   }
   &__name {
     font-size: 36px;
     color: $color-tritre-h2;
     font-weight: 400;
+    &--photograph {
+      font-size: 64px;
+      color: $color-tritre-h2;
+      font-weight: 400;
+    }
   }
   &__location {
     color: $color-titre-h1;
     font-size: 13px;
+    &--photograph {
+      color: $color-titre-h1;
+      font-size: 24px;
+    }
   }
   &__intro {
     font-size: 10px;
+    &--photograph {
+      font-size: 18px;
+    }
   }
   &__price {
     color: $color-price;
@@ -186,6 +213,24 @@ body {
     margin: 0px 2.5px 0px 2.5px;
     padding: 3px 7px;
     cursor: pointer;
+    &--photograph {
+      color: $color-titre-h1;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      border: 0px 2.5px 0px;
+      height: 22px;
+      font-size: 18px;
+      list-style-type: none;
+      border: solid;
+      border-radius: 11px;
+      border-width: 0.5px;
+      border-color: $border-color;
+      margin: 0px 2.5px 0px 2.5px;
+      padding: 3px 7px;
+      cursor: pointer;
+    }
     &:hover {
       background-color: $background-color;
       color: white;
@@ -205,9 +250,9 @@ body {
 .second-body {
   padding-top: 44px;
   font-family: $font-family;
-  width: 100vw;
-  padding-left: 100px;
-  padding-right: 100px;
+  width: 100%;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 .contact-me {
@@ -216,6 +261,8 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   &__btn {
+    position: relative;
+    top: 10px;
     width: 170px;
     height: 69px;
     font-size: 20px;
@@ -224,6 +271,9 @@ body {
     border-radius: 5px;
     background-color: $background-color;
     color: white;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
@@ -238,6 +288,13 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   padding-top: 9px;
+}
+
+.filter {
+  height: 57px;
+}
+.popularity-text {
+  padding: 25px 0px;
 }
 
 .list {
@@ -290,6 +347,9 @@ body {
   font-weight: 700px;
   margin-left: 5px;
   border-radius: 5px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 #filter-popular {
@@ -301,13 +361,17 @@ body {
 }
 
 .profile-section {
+  position: relative;
   background-color: $background-color-photograph-section;
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: flex-start;
+  padding-left: 50px;
+  padding-right: 50px;
   width: 100%;
-  padding-top: 63px;
-  padding-bottom: 63px;
+  padding-top: 56px;
+  padding-bottom: 48px;
+  margin-top: 40px;
 }
 
 .presentation {
@@ -315,6 +379,15 @@ body {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  max-width: 400px;
+}
+
+.profile__location--photograph {
+  margin-bottom: 19px;
+}
+
+.profile__intro--photograph {
+  margin-bottom: 15px;
 }
 
 .photograph-content {
@@ -368,6 +441,9 @@ body {
     height: 300px;
     border-radius: 5px;
     object-fit: cover;
+    &:hover {
+      cursor: pointer;
+    }
   }
   &__description {
     padding-top: 10px;
@@ -381,6 +457,9 @@ body {
       padding-left: 6.37px;
       padding-right: 3px;
       color: $color-titre-h1;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
   &__title {
@@ -388,7 +467,8 @@ body {
     font-size: 24px;
     color: $color-titre-h1;
     white-space: nowrap;
-    text-overflow: clip;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   &__number {
     font-weight: 500;
@@ -405,7 +485,7 @@ body {
 
 .form-section {
   position: fixed;
-  top: 50px;
+  top: 30px;
   margin-left: auto;
   margin-right: auto;
   width: 100vw;
@@ -420,17 +500,29 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   background-color: $background-color-aside;
   width: 669px;
-  height: 900px;
+  height: 830px;
   border-radius: 5px;
-  padding: 35px;
+  padding: 35px 35px 0px 35px;
+  &__background {
+    position: fixed;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    background-color: white;
+  }
   &__title {
     font-size: 64px;
     color: black;
     font-weight: 400;
+    line-height: 95%;
   }
   & label {
     font-size: 36px;
@@ -468,6 +560,17 @@ body {
     color: white;
     font-size: 42px;
   }
+  &__submit-btn {
+    font-size: 20px;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    background-color: #901c1c;
+    color: white;
+    width: 170px;
+    height: 35px;
+    font-size: 18px;
+  }
 }
 
 #slider-section {
@@ -475,6 +578,7 @@ body {
   top: 0px;
   left: 0px;
   width: 100%;
+  height: 100vh;
   display: none;
   flex-direction: row;
   justify-content: center;
@@ -488,8 +592,8 @@ body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 1253px;
-  height: 984px;
+  width: 100%;
+  height: 100vh;
   &__btn {
     color: $background-color;
     width: 29.64px;
@@ -499,22 +603,31 @@ body {
   }
   & i {
     font-size: 48px;
+    cursor: pointer;
   }
   &__img {
-    width: 1050px;
+    width: 100%;
+    height: 100%;
     border-radius: 5px;
     object-fit: cover;
-    padding-left: 34.36px;
-    padding-right: 34.36px;
+  }
+  &__container {
+    width: 70%;
+    height: 90%;
+    margin-left: 2%;
+    margin-right: 2%;
   }
 }
 
 #slider__cross {
   position: absolute;
-  top: 37px;
-  right: 40px;
+  top: -373px;
+  right: 0px;
   font-size: 42px;
   color: $background-color;
+}
+.cross-container {
+  position: relative;
 }
 
 .top-btn {
@@ -533,6 +646,38 @@ body {
   &:hover {
     cursor: pointer;
   }
+}
+
+.profile__tagslist {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.mini-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  width: 70px;
+}
+
+.slider__name {
+  font-weight: 400;
+  font-size: 24px;
+  color: $color-titre-h1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#next-btn {
+  cursor: pointer;
+}
+#previous-btn {
+  cursor: pointer;
 }
 
 /////////////////////////// MEDIA QUERIES /////////////////////////
@@ -555,7 +700,7 @@ body {
   .header__logo {
     position: absolute;
     top: 30px;
-    left: 0px;
+    left: -22px;
   }
 
   .header__liste {
@@ -568,5 +713,237 @@ body {
 
   .main {
     padding-top: 130px;
+  }
+
+  // Page photographe
+  .profile__name--photograph {
+    font-size: 36px;
+    width: 202px;
+  }
+  .profile__location--photograph,
+  .profile__intro--photograph,
+  .profile__tag--photograph {
+    font-size: 13px;
+    padding-bottom: 5px;
+    margin-bottom: 0px;
+  }
+
+  .profile__intro--photograph {
+    color: #757575;
+  }
+
+  .profile__img--photograph {
+    top: -10px;
+    right: 0px;
+    width: 100px;
+    height: 100px;
+  }
+
+  .pictures__pics {
+    width: 100%;
+    height: 190px;
+  }
+
+  .contact-me {
+    position: fixed;
+    bottom: 30px;
+    width: 170px;
+    left: 50%;
+    margin-left: -85px;
+  }
+  .contact-me__btn {
+    z-index: 3;
+    width: 170px;
+    height: 35px;
+    font-size: 18px;
+  }
+
+  .profile-section {
+    padding: 0px;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    background-color: transparent;
+  }
+
+  .counter {
+    display: none;
+  }
+
+  .presentation {
+    align-items: flex-start;
+  }
+
+  .pictures__media {
+    width: 100%;
+  }
+
+  .pictures__title,
+  .pictures__number,
+  .mini-container i {
+    font-size: 14px;
+  }
+
+  .navigation-filter {
+    display: none;
+  }
+
+  .form {
+    position: fixed;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    max-width: 100vw;
+    padding: 20px 22px 0px 15px;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+
+  .form__title {
+    font-size: 36px;
+  }
+
+  .form label {
+    margin-top: 14px;
+    font-size: 24px;
+  }
+
+  .form i {
+    font-size: 19px;
+  }
+
+  .form__input-first {
+    height: 52px;
+  }
+
+  .form__input-last {
+    height: 52px;
+  }
+
+  .form__input-email {
+    height: 52px;
+  }
+
+  .form input {
+    margin-top: 6px;
+  }
+
+  #slider__cross {
+    top: -164px;
+    right: 19px;
+    font-size: 20px;
+  }
+  .slider i {
+    font-size: 24px;
+  }
+  .slider__container {
+    height: 30%;
+    width: 80%;
+  }
+  #next-btn {
+    margin-right: 10px;
+  }
+  #previous-btn {
+    margin-left: 10px;
+  }
+
+  .slider__name {
+    font-size: 14px;
+  }
+  .navigation-filter {
+    display: none;
+  }
+}
+
+// Empêcher la photo d'écraser le bouton "contactez-moi"
+
+@media only screen and (min-width: 376px) and (max-width: 1100px) {
+  .contact-me {
+    position: fixed;
+    bottom: 30px;
+    width: 170px;
+    left: 50%;
+    margin-left: -85px;
+  }
+  .contact-me__btn {
+    z-index: 3;
+    width: 170px;
+    height: 35px;
+    font-size: 18px;
+  }
+}
+
+// Tablettes
+@media only screen and (min-width: 376px) and (max-width: 1024px) {
+  .profile__name--photograph {
+    font-size: 36px;
+    width: 202px;
+  }
+  .profile__location--photograph,
+  .profile__intro--photograph,
+  .profile__tag--photograph {
+    font-size: 13px;
+    padding-bottom: 5px;
+    margin-bottom: 0px;
+  }
+
+  .profile-section {
+    padding-bottom: 77px;
+    padding-left: 0px;
+    padding-top: 0px;
+    background-color: transparent;
+  }
+
+  .profile__img--photograph {
+    top: -16.5px;
+  }
+
+  .profile-section p {
+    margin-bottom: 15px;
+  }
+
+  .counter {
+    display: none;
+  }
+
+  .second-body {
+    padding: 40px 3% 0px 3%;
+  }
+
+  .titre_h1 {
+    top: 129px;
+    left: 31px;
+    text-align: left;
+    width: 100%;
+    font-size: 19px;
+  }
+
+  .counter {
+    display: none;
+  }
+
+  .profile {
+    width: 331px;
+  }
+
+  .header {
+    width: 90%;
+  }
+
+  .slider__container {
+    height: 70%;
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .profile__img--photograph {
+    width: 100px;
+    height: 100px;
+  }
+  .slider__container {
+    height: 40%;
+    width: 80%;
   }
 }

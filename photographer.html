@@ -5,73 +5,129 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FishEye</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
       rel="stylesheet"
     />
-    <script type="module" defer>
+    <script type="module">
       import "./main.js";
     </script>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body class="second-body">
     <header class="header">
-      <img class="header__logo" src="logo.png" alt="Logo de FishEye" />
+      <a href="./index.html" aria-label="FishEye Home page"
+        ><img
+          class="header__logo"
+          src="logo.png"
+          alt="Logo de FishEye"
+          role="”img”"
+      /></a>
     </header>
 
     <section class="profile-section">
       <div class="presentation"></div>
       <div class="contact-me">
-        <button class="contact-me__btn">Contactez moi</button>
+        <button class="contact-me__btn" aria-label="Contact Me">
+          Contactez moi
+        </button>
       </div>
       <div class="profil-pic"></div>
     </section>
 
-    <nav class="navigation-filter">
+    <nav class="navigation-filter" role="navigation">
       <p class="sortby">Trier par</p>
-      <select class="filter">
-        <option class="popularity">
-          <p class="popularity__text" selected>Popularité</p>
-        </option>
-        <option class="date"><p class="date__text">Date</p></option>
-        <option class="title"><p class="title__texte">Titre</p></option>
-      </select>
+      <label for="filter">
+        <select id="filter" class="filter">
+          <option class="popularity" selected>
+            <p class="popularity__text">Popularité</p>
+          </option>
+          <option class="date"><p class="date__text">Date</p></option>
+          <option class="title"><p class="title__texte">Titre</p></option>
+        </select>
+      </label>
     </nav>
 
     <section class="pictures"></section>
 
-    <section class="form-section">
-      <form name="contact-form" method = "get" id = "form" class="form" action="photographer.html">
-        <h2 class="form__title">Contactez-moi</h2>
-        <label class="form__label-first" for="first-name">Prénom</label>
-        <input class="form__input-first" type="text" name ="first-name" required/>
-        <label class="form__label-last" for="last-name">Nom</label>
-        <input class="form__input-last" type="text" name="last-name" required/>
-        <label class="form__label-email" for="email">Email</label>
-        <input class="form__input-email" type="email" name="email" required/>
-        <label class="form__label-message" for="message">Votre message</label>
-        <input class="form__input-message" type="text" name="message" required/>
-        <input class="contact-me__btn" type="submit" value="Envoyer"></input>
-        <i id="cross" class="fas fa-times"></i>
-      </form>
+    <section
+      class="form-section"
+      aria-hidden="true"
+      role="dialog"
+      aria-describedby="modalTitle"
+    >
+      <div class="form__background">
+        <form
+          name="contact-form"
+          method="get"
+          id="form"
+          class="form"
+          action="photographer.html"
+          aria-hidden="true"
+        >
+          <h2 class="form__title" id="modalTitle">Contactez-moi</h2>
+          <label class="form__label-first" for="first-name">Prénom</label>
+          <input
+            class="form__input-first"
+            type="text"
+            name="first-name"
+            id="first-name"
+            required
+            aria-required="true"
+          />
+          <label class="form__label-last" for="last-name">Nom</label>
+          <input
+            class="form__input-last"
+            type="text"
+            name="last-name"
+            id="last-name"
+            required
+            aria-required="true"
+          />
+          <label class="form__label-email" for="email">Email</label>
+          <input
+            class="form__input-email"
+            type="email"
+            name="email"
+            id="email"
+            required
+            aria-required="true"
+          />
+          <label class="form__label-message" for="message">Votre message</label>
+          <input
+            class="form__input-message"
+            type="text"
+            name="message"
+            id="message"
+            required
+            aria-required="true"
+          />
+          <input class="form__submit-btn" type="submit" value="Envoyer" />
+          <i id="cross" class="fas fa-times"></i>
+        </form>
+      </div>
     </section>
 
-    <section id="slider-section">
-      <div class="slider">
+    <section id="slider-section" aria-hidden="true">
+      <div class="slider" aria-label="image closeup view">
         <button id="previous-btn" class="slider__btn">
           <i class="fas fa-chevron-left"></i>
         </button>
-        <div class="slider__container">
-        <img class="slider__img" src="" alt=""/>
-      </div>
+        <div class="slider__container"></div>
         <button id="next-btn" class="slider__btn">
-          <i class="fas fa-chevron-right"></i>
+          <i class="fas fa-chevron-right" aria-label="Close dialog"></i>
         </button>
-        <h2 class="slider__title"></h2>
-        <i id="slider__cross" class="fas fa-times"></i>
+        <div class="cross-container">
+          <i id="slider__cross" class="fas fa-times"></i>
+        </div>
       </div>
     </section>
 
