@@ -44,7 +44,7 @@ if (window.location.pathname === "/index.html") {
     main.innerHTML = `<h1 class="titre_h1">Nos photographes</h1>
     <button class="top-btn">Passer au contenu</button>`;
 
-    //Insérer une div de class "profile" pour chaque photographe sur la page "index.html"
+    //Insérer une div de class "profile" destinée à afficher chaque photographe sur la page "index.html"
 
     array.forEach((profil) => {
       main.innerHTML += `<div class="profile" id="${profil.id}" ></div>`;
@@ -96,14 +96,6 @@ if (window.location.pathname === "/index.html") {
       p.addEventListener("click", () => {
         p.firstElementChild.submit();
       });
-      // Idem pour l'envoi du formulaire au clavier
-      p.addEventListener("focus", () => {
-        window.addEventListener("keydown", (e) => {
-          if (e.key === "Enter") {
-            p.firstElementChild.submit();
-          }
-        });
-      });
     });
 
     // Faire apparaître le bouton "haut de page" au scroll
@@ -114,7 +106,7 @@ if (window.location.pathname === "/index.html") {
       }
     });
 
-    // permettre de revenir en haut de page
+    // permettre de revenir en haut de page au click du bouton
     topButton.addEventListener("click", () => {
       scrollTo(0, 0);
     });
@@ -195,6 +187,8 @@ if (window.location.pathname === "/photographer.html") {
     return media.photographerId == idNumber;
   });
 
+  // Fonction de rendu de la page photographe
+
   let renderMedias = (array) => {
     // Vider la section "pictures"
     picturesSection[0].innerHTML = "";
@@ -227,6 +221,7 @@ if (window.location.pathname === "/photographer.html") {
       "counter__likes__number"
     )[0];
 
+    // Incrémenter le total de likes en bas de page
     for (let i = 0; i < coeurs.length; i++) {
       coeurs[i].addEventListener("click", () => {
         picturesNumber[i].textContent =
@@ -240,8 +235,6 @@ if (window.location.pathname === "/photographer.html") {
         document.getElementsByClassName("pictures__pics");
       const lightbox = document.getElementById("slider-section");
       let ariaHidden = lightbox.getAttribute("aria-hidden");
-      let lightboxImage = document.getElementsByClassName("slider__img")[0];
-      const lightboxTitle = document.getElementsByClassName("slider__name")[0];
 
       const lightboxCross = document.getElementById("slider__cross");
       const openLightbox = () => {
@@ -278,36 +271,38 @@ if (window.location.pathname === "/photographer.html") {
           }
         };
 
-        // Ouverture de la lightbox au clic
-        photographerPictures[i].addEventListener("click", () => {
-          openLightbox();
-          renderLightbox();
-          // Défilement vers la gauche
-          previousBtn.addEventListener("click", () => {
-            nextBtn.style.display = "block";
-            if (i === 0) {
-              renderLightbox();
-              previousBtn.style.display = "none";
-            } else {
-              i--;
-              renderLightbox();
+        // fonction défilement vers la gauche ou vers la droite au click
+        const changePicturesByClick = (button) => {
+          button.addEventListener("click", () => {
+            switch (button) {
+              case previousBtn:
+                nextBtn.style.display = "block";
+                if (i === 0) {
+                  renderLightbox();
+                  button.style.display = "none";
+                } else {
+                  i--;
+                  renderLightbox();
+                }
+                break;
+              case nextBtn:
+                previousBtn.style.display = "block";
+                if (i === picturesAndVideos.length - 1) {
+                  renderLightbox();
+                  button.style.display = "none";
+                } else {
+                  i++;
+                  renderLightbox();
+                }
+                break;
+              default:
+                console.log("button doesn't work");
             }
           });
+        };
 
-          // Défilement à droite
-          nextBtn.addEventListener("click", () => {
-            previousBtn.style.display = "block";
-            if (i === picturesAndVideos.length - 1) {
-              renderLightbox();
-              nextBtn.style.display = "none";
-            } else {
-              i++;
-              renderLightbox();
-            }
-          });
-
-          // Défilement au clavier
-
+        // Fonction défilement au clavier
+        const changePicturesByKeyboard = () => {
           window.addEventListener("keydown", (e) => {
             switch (e.key) {
               case "ArrowRight":
@@ -336,69 +331,27 @@ if (window.location.pathname === "/photographer.html") {
                 return;
             }
           });
-        });
+        };
+
+        // Fonction générique
+        const showLightboxbyClick = () => {
+          photographerPictures[i].addEventListener("click", () => {
+            openLightbox();
+            renderLightbox();
+            changePicturesByClick(previousBtn);
+            changePicturesByClick(nextBtn);
+            changePicturesByKeyboard();
+          });
+        };
+
+        showLightboxbyClick();
 
         // Permettre l'ouverture de la ligthbox au clavier
 
         photographerPictures[i].addEventListener("focus", () => {
           window.addEventListener("keydown", (e) => {
             if (e.key === "Enter" && ariaHidden === "true") {
-              openLightbox();
-              renderLightbox();
-              // Défilement vers la gauche
-              previousBtn.addEventListener("click", () => {
-                nextBtn.style.display = "block";
-                if (i === 0) {
-                  renderLightbox();
-                  previousBtn.style.display = "none";
-                } else {
-                  i--;
-                  renderLightbox();
-                }
-              });
-
-              // Défilement à droite
-              nextBtn.addEventListener("click", () => {
-                previousBtn.style.display = "block";
-                if (i === picturesAndVideos.length - 1) {
-                  renderLightbox();
-                  nextBtn.style.display = "none";
-                } else {
-                  i++;
-                  renderLightbox();
-                }
-              });
-
-              // Défilement au clavier
-
-              window.addEventListener("keydown", (e) => {
-                switch (e.key) {
-                  case "ArrowRight":
-                    previousBtn.style.display = "block";
-                    if (i === picturesAndVideos.length - 1) {
-                      renderLightbox();
-                      nextBtn.style.display = "none";
-                    } else {
-                      i++;
-                      renderLightbox();
-                    }
-                    break;
-
-                  case "ArrowLeft":
-                    nextBtn.style.display = "block";
-                    if (i === 0) {
-                      renderLightbox();
-                      previousBtn.style.display = "none";
-                    } else {
-                      i--;
-                      renderLightbox();
-                    }
-                    break;
-
-                  default:
-                    return;
-                }
-              });
+              showLightboxbyClick();
             }
           });
         });
@@ -419,6 +372,8 @@ if (window.location.pathname === "/photographer.html") {
 
   renderMedias(selectedMedias);
 
+  // Partie Filtre :
+
   //DOM Elements for the filter
   const select = document.getElementsByClassName("filter")[0];
   let picturesNumber = document.getElementsByClassName("pictures__number");
@@ -438,7 +393,7 @@ if (window.location.pathname === "/photographer.html") {
     });
   };
 
-  // Fontction trie des médias par Date
+  // Fonction trie des médias par Date
 
   const sortByDate = (mediaTable) => {
     mediaTable.sort((a, b) => {
@@ -448,49 +403,59 @@ if (window.location.pathname === "/photographer.html") {
 
   sortByPopularity(selectedMedias);
 
-  // Appliquer un trie des médias par titre
-  // 1.  cibler l'élément "select"
-  select.addEventListener("change", () => {
-    //2. Appliquer un trie des médias
-    if (select.value === "Titre") {
-      sortByTitle(selectedMedias);
-      renderMedias(selectedMedias);
-    } else if (select.value === "Date") {
-      sortByDate(selectedMedias);
-      renderMedias(selectedMedias);
-    } else {
-      sortByPopularity(selectedMedias);
-      renderMedias(selectedMedias);
-    }
-  });
+  // Permettre le classement des médias avec le bouton select
 
-  // Ajouter 2 fonctions pour pouvoir ouvrir et fermer le formulaire
+  const sortWithSelectButton = () => {
+    select.addEventListener("change", () => {
+      switch (select.value) {
+        case "Titre":
+          sortByTitle(selectedMedias);
+          break;
+        case "Date":
+          sortByDate(selectedMedias);
+          break;
+        case "Popularité":
+          sortByPopularity(selectedMedias);
+          break;
+        default:
+          console.log("Select button doesn't work");
+      }
+      renderMedias(selectedMedias);
+    });
+  };
+
+  sortWithSelectButton();
+
+  // Partie formulaire
   const contactButton = document.getElementsByClassName("contact-me__btn")[0];
   const contactForm = document.getElementsByClassName("form-section")[0];
   let modalClosed = contactForm.getAttribute("aria-hidden");
   const contactTitle = document.getElementsByClassName("form__title")[0];
   const cross = document.getElementById("cross");
 
+  // Fonction ouverture de modale
   const openModal = () => {
     contactForm.style.display = "flex";
     contactTitle.textContent = `Contactez-moi ${selectedProfil[0].name}`;
     modalClosed = "false";
   };
 
+  // Fonction fermeture de modale
   const closeModal = () => {
     contactForm.style.display = "none";
   };
 
+  // Ajouter un listener au click sur le bouton d'ouverture de la modale
   contactButton.addEventListener("click", () => {
     openModal();
   });
 
-  // Fermeture de la modale à la souris
+  // Ajouter un listener au click sur le bouton de fermeture de la modale
   cross.addEventListener("click", () => {
     closeModal();
   });
 
-  // Fermeture de la modale au clavier
+  // Permettre la fermeture de la modale au clavier
   window.addEventListener("keydown", (e) => {
     if (modalClosed == "false" && e.key === "Escape") {
       closeModal();
