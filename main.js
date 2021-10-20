@@ -37,6 +37,25 @@ if (window.location.pathname === "/index.html") {
   // Récupérer l'élément du DOM sur lequel je souhaite créer les profils des photographes
   let main = document.getElementsByClassName("main")[0];
 
+  // Insérer la liste de tags dans le header
+  let headerList = document.getElementsByClassName("header__liste")[0];
+  let tableTags = [
+    "#Portrait",
+    "#Fashion",
+    "#Architecture",
+    "#Travel",
+    "#Sport",
+    "#Animals",
+    "#Events",
+  ];
+
+  for (let i = 0; i < tableTags.length; i++) {
+    headerList.innerHTML +=
+      '<li class="btn__speciality" aria-label="tag"><span>' +
+      tableTags[i] +
+      "</span></li>";
+  }
+
   const render = (array) => {
     // Vider la div de class "main"
     main.innerHTML = "";
@@ -69,6 +88,8 @@ if (window.location.pathname === "/index.html") {
     let profileTag = document.getElementsByClassName("profile__skills");
     let topButton = document.getElementsByClassName("top-btn")[0];
 
+    console.log(headerList);
+
     // Créer une boucle pour insérer le contenu de la page d'acceuil
 
     for (let i = 0; i < array.length; i++) {
@@ -79,7 +100,7 @@ if (window.location.pathname === "/index.html") {
       // Injecter les phrases de présentation des photographes dans le HTML
       profileIntro[i].textContent = array[i].tagline;
       // Injecter les photos des photographes dans le HTML
-      profileImage[i].src = array[i].portrait;
+      profileImage[i].src = "./" + array[i].portrait;
       // Injecter les tarifs des photographes dans le HTML
       profilePrice[i].textContent = array[i].price + "€/jour";
       // Pour chaque tag tu tableau tags : créer un innerHtml
@@ -167,7 +188,7 @@ if (window.location.pathname === "/photographer.html") {
 
   // Editer le HTML en fonction des données du photograph sélèctionné
 
-  profilPic.innerHTML = `<img class="profile__img--photograph" src="${selectedProfil[0].portrait}" alt="${selectedProfil[0].name}" role="img"></img>`;
+  profilPic.innerHTML = `<img class="profile__img--photograph" src="./${selectedProfil[0].portrait}" alt="${selectedProfil[0].name}" role="img"></img>`;
   presentation.innerHTML = `<h1 class="profile__name--photograph">${selectedProfil[0].name}</h1>
     <p class="profile__location--photograph">${selectedProfil[0].city}, ${selectedProfil[0].country}</p>
     <p class="profile__intro--photograph">${selectedProfil[0].tagline}</p>

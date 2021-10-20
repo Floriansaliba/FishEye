@@ -19,19 +19,24 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 70%;
+  width: 100%;
 }
 
 .header__logo {
   width: 200px;
-  position: relative;
+  position: absolute;
+  top: 30px;
   left: -33px;
+}
+
+.header__nav {
+  margin: 0px 30%;
 }
 
 .header__liste {
@@ -78,6 +83,7 @@ body {
   margin: 0px 2.5px 0px 2.5px;
   padding: 3px 7px;
   cursor: pointer;
+  margin-bottom: 6px;
 }
 
 .btn__speciality:hover {
@@ -104,11 +110,12 @@ body {
           justify-content: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  overflow: hidden;
 }
 
 .titre_h1 {
   position: absolute;
-  top: 44px;
+  top: 29px;
   right: 0;
   width: 30%;
   text-align: center;
@@ -1088,7 +1095,7 @@ body {
   }
 }
 
-@media only screen and (min-width: 376px) and (max-width: 1024px) {
+@media only screen and (min-width: 376px) and (max-width: 1023px) {
   .profile__name--photograph {
     font-size: 36px;
     width: 202px;
