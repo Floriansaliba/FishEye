@@ -44,6 +44,7 @@ body {
   padding-top: 44px;
   font-family: $font-family;
   width: 100vw;
+  overflow: hidden;
 }
 
 // Style du header
@@ -54,14 +55,25 @@ body {
   justify-content: center;
   align-items: center;
   width: 100%;
+  &--photographer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+  }
   &__logo {
     width: 200px;
     position: absolute;
     top: 30px;
     left: -33px;
+    &--photographer {
+      position: relative;
+      width: 200px;
+    }
   }
   &__nav {
-    margin: 0px 30%;
+    margin: 0px 32%;
   }
   &__liste {
     display: flex;
@@ -111,7 +123,6 @@ body {
   flex-direction: row;
   justify-content: flex-start;
   flex-wrap: wrap;
-  overflow: hidden;
 }
 
 // Element h1
@@ -694,6 +705,7 @@ body {
     font-size: 14px;
     width: 119px;
     margin-right: 22px;
+    top: 47px;
   }
 
   .btn__speciality {
@@ -709,8 +721,13 @@ body {
     left: -22px;
   }
 
+  .header__nav {
+    margin: 0px;
+  }
+
   .header__liste {
-    position: absolute;
+    position: static;
+    margin-top: 50px;
     top: 109px;
     left: 0px;
     padding-right: 39px;
@@ -718,7 +735,7 @@ body {
   }
 
   .main {
-    padding-top: 130px;
+    padding-top: 11px;
   }
 
   // Page photographe
@@ -918,7 +935,7 @@ body {
   }
 
   .titre_h1 {
-    top: 129px;
+    top: 99px;
     left: 31px;
     text-align: left;
     width: 100%;
@@ -934,7 +951,12 @@ body {
   }
 
   .header {
-    width: 90%;
+    width: 100%;
+    justify-content: flex-end;
+    &__nav {
+      margin-right: 0px;
+      margin-left: 200px;
+    }
   }
 
   .slider__container {
