@@ -51,7 +51,7 @@ if (window.location.pathname === "/index.html") {
 
   for (let i = 0; i < tableTags.length; i++) {
     headerList.innerHTML +=
-      '<li class="btn__speciality" aria-label="tag"><span>' +
+      '<li class="btn__speciality" role="link"><span aria-label="tag">' +
       tableTags[i] +
       "</span></li>";
   }
@@ -61,7 +61,7 @@ if (window.location.pathname === "/index.html") {
     main.innerHTML = "";
     //Insérer le titre
     main.innerHTML = `<h1 class="titre_h1">Nos photographes</h1>
-    <button class="top-btn">Passer au contenu</button>`;
+    <button  role="link" class="top-btn">Passer au contenu</button>`;
 
     //Insérer une div de class "profile" destinée à afficher chaque photographe sur la page "index.html"
 
@@ -76,10 +76,10 @@ if (window.location.pathname === "/index.html") {
     for (let i = 0; i < divProfile.length; i++) {
       divProfile[
         i
-      ].innerHTML += `<form class="form-photographer" action="/photographer.html"><input id="hidden-input" type="hidden" name="id" value=${array[i].id}><img class="profile__img" src="" alt="${array[i].name}" role="img"></img><h2 class="profile__name">exemple</h2><p class="profile__location">exemple</p><p class="profile__intro">exemple</p><p class="profile__price"></p><ul class="profile__skills"></ul></input></form>`;
+      ].innerHTML += `<form class="form-photographer" action="/photographer.html"><input id="hidden-input" type="hidden" name="id" value=${array[i].id}><img class="profile__img" src="" alt="${array[i].name}" role="img"></img><h2 class="profile__name">exemple</h2></form><p class="profile__location">exemple</p><p class="profile__intro">exemple</p><p class="profile__price"></p><ul class="profile__skills"></ul></input>`;
     }
 
-    // Récupérer les éléments du DOM de la page principale
+    // Récupérer les éléments du DOM insérés en Javascript
     let profileName = document.getElementsByClassName("profile__name");
     let profileLocation = document.getElementsByClassName("profile__location");
     let profileIntro = document.getElementsByClassName("profile__intro");
@@ -87,8 +87,6 @@ if (window.location.pathname === "/index.html") {
     let profilePrice = document.getElementsByClassName("profile__price");
     let profileTag = document.getElementsByClassName("profile__skills");
     let topButton = document.getElementsByClassName("top-btn")[0];
-
-    console.log(headerList);
 
     // Créer une boucle pour insérer le contenu de la page d'acceuil
 
@@ -106,16 +104,18 @@ if (window.location.pathname === "/index.html") {
       // Pour chaque tag tu tableau tags : créer un innerHtml
       //Insérer une balise <li> dans le HTML
       array[i].tags.forEach((tag) => {
-        profileTag[i].innerHTML += `<li class="profile__tag">#${tag}</li>`;
+        profileTag[
+          i
+        ].innerHTML += `<li class="profile__tag" aria-label="Tag">#${tag}</li>`;
       });
     }
 
-    const profilsForm = document.querySelectorAll(".profile");
+    const photographersLink = document.querySelectorAll(".form-photographer");
 
     // Activer l'envoi du formulaire au click sur un profil
-    profilsForm.forEach((p) => {
+    photographersLink.forEach((p) => {
       p.addEventListener("click", () => {
-        p.firstElementChild.submit();
+        p.submit();
       });
     });
 
@@ -134,28 +134,41 @@ if (window.location.pathname === "/index.html") {
   };
   render(profilsTable);
 
+  // Ajouter un filtre au click sur les tags des profils
+  // Cibler la liste de tag pour chaque profil
+  let tagsByProfil = document.getElementsByClassName("profile__tag");
+
   // Ajouter un listener au click sur les tags afin de filtrer les photographes
   const labels = document.getElementsByClassName("btn__speciality");
 
-  for (let i = 0; i < labels.length; i++) {
-    labels[i].addEventListener("click", (e) => {
-      let labelName = e.target.textContent.split("#")[1].toLowerCase();
-
-      // Vérifier si le tag correspond a un des tags des photographes
-
-      const filterProfil = profilsTable.filter((profil) => {
-        if (profil.tags.includes(labelName)) return profil;
+  let filterbyTags = (tagList) => {
+    for (let i = 0; i < tagList.length; i++) {
+      tagList[i].addEventListener("click", (e) => {
+        let labelName = e.target.textContent.split("#")[1].toLowerCase();
+        // Vérifier si le tag correspond a un des tags des photographes
+        const filterProfil = profilsTable.filter((profil) => {
+          if (profil.tags.includes(labelName)) return profil;
+        });
+        render(filterProfil);
       });
-      render(filterProfil);
-    });
-    // Idem pour activer le filtre au clavier
+    }
+  };
+
+  // Filtrer les photographes à partir des tags du header
+  filterbyTags(labels);
+
+  // Filtrer les photographes à partir des tags des photographes
+
+  filterbyTags(tagsByProfil);
+
+  // Filtrer les photographes au clavier
+
+  for (let i = 0; i < labels.length; i++) {
     labels[i].addEventListener("focus", () => {
       window.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
           let labelName = e.target.textContent.split("#")[1].toLowerCase();
-
           // Vérifier si le tag correspond a un des tags des photographes
-
           const filterProfil = profilsTable.filter((profil) => {
             if (profil.tags.includes(labelName)) return profil;
           });
@@ -197,7 +210,7 @@ if (window.location.pathname === "/photographer.html") {
   // Ajouter les tags du profil
   const tagslist = document.getElementsByClassName("profile__tagslist")[0];
   selectedProfil[0].tags.forEach((tag) => {
-    tagslist.innerHTML += `<li class="profile__tag--photograph">#${tag}</li>`;
+    tagslist.innerHTML += `<li class="profile__tag--photograph" aria-label="Link">#${tag}</li>`;
   });
 
   document.body.className = "second-body";
@@ -250,6 +263,21 @@ if (window.location.pathname === "/photographer.html") {
         totalOfLikes.textContent = parseInt(totalOfLikes.textContent) + 1;
       });
     }
+
+    // Retourner vers la homepage après click sur les Tags
+    let clickOnTags = () => {
+      const photographerTags = document.getElementsByClassName(
+        "profile__tag--photograph"
+      );
+
+      for (let i = 0; i < photographerTags.length; i++) {
+        photographerTags[i].addEventListener("click", () => {
+          window.location.pathname = "/index.html";
+        });
+      }
+    };
+    clickOnTags();
+
     const lightboxFunction = () => {
       // Faire apparaitre la lightbox au click de chaque image
       let photographerPictures =
@@ -266,7 +294,11 @@ if (window.location.pathname === "/photographer.html") {
 
       const closeLightbox = () => {
         lightbox.style.display = "none";
-        divTotalLikes.style.display = "flex";
+        if (window.matchMedia("(max-width: 1100px)").matches) {
+          divTotalLikes.style.display = "none";
+        } else {
+          divTotalLikes.style.display = "flex";
+        }
       };
       const nextBtn = document.getElementById("next-btn");
       const previousBtn = document.getElementById("previous-btn");

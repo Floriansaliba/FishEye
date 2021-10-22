@@ -26,7 +26,7 @@
           class="header__logo--photographer"
           src="./Logo.png"
           alt="Logo de FishEye"
-          role="”img”"
+          role="link"
       /></a>
     </header>
 
@@ -40,15 +40,13 @@
       <div class="profil-pic"></div>
     </section>
 
-    <nav class="navigation-filter" role="navigation">
+    <nav class="navigation-filter">
       <p class="sortby">Trier par</p>
       <label for="filter">
         <select id="filter" class="filter">
-          <option class="popularity" selected>
-            <p class="popularity__text">Popularité</p>
-          </option>
-          <option class="date"><p class="date__text">Date</p></option>
-          <option class="title"><p class="title__texte">Titre</p></option>
+          <option class="popularity" selected>Popularité</option>
+          <option class="date">Date</option>
+          <option class="title">Titre</option>
         </select>
       </label>
     </nav>
@@ -59,7 +57,7 @@
       class="form-section"
       aria-hidden="true"
       role="dialog"
-      aria-describedby="modalTitle"
+      aria-labelledby="modalTitle"
     >
       <div class="form__background">
         <form
@@ -71,7 +69,9 @@
           aria-hidden="true"
         >
           <h2 class="form__title" id="modalTitle">Contactez-moi</h2>
-          <label class="form__label-first" for="first-name">Prénom</label>
+          <label class="form__label-first" id="labelfirst" for="first-name"
+            >Prénom</label
+          >
           <input
             class="form__input-first"
             type="text"
@@ -79,8 +79,11 @@
             id="first-name"
             required
             aria-required="true"
+            aria-labelledby="labelfirst"
           />
-          <label class="form__label-last" for="last-name">Nom</label>
+          <label class="form__label-last" id="labellast" for="last-name"
+            >Nom</label
+          >
           <input
             class="form__input-last"
             type="text"
@@ -88,8 +91,11 @@
             id="last-name"
             required
             aria-required="true"
+            aria-labelledby="labellast"
           />
-          <label class="form__label-email" for="email">Email</label>
+          <label class="form__label-email" id="labelemail" for="email"
+            >Email</label
+          >
           <input
             class="form__input-email"
             type="email"
@@ -97,8 +103,11 @@
             id="email"
             required
             aria-required="true"
+            aria-labelledby="labelemail"
           />
-          <label class="form__label-message" for="message">Votre message</label>
+          <label class="form__label-message" id="labelmessage" for="message"
+            >Votre message</label
+          >
           <input
             class="form__input-message"
             type="text"
@@ -106,23 +115,45 @@
             id="message"
             required
             aria-required="true"
+            aria-labelledby="labelmessage"
           />
-          <input class="form__submit-btn" type="submit" value="Envoyer" />
-          <i id="cross" class="fas fa-times"></i>
+          <input
+            class="form__submit-btn"
+            type="submit"
+            value="Envoyer"
+            role="button"
+            aria-label="send"
+          />
+          <i
+            id="cross"
+            class="fas fa-times"
+            role="button"
+            aria-label="Close contact form"
+          ></i>
         </form>
       </div>
     </section>
 
     <section id="slider-section" aria-hidden="true">
       <div class="slider" aria-label="image closeup view">
-        <button id="previous-btn" class="slider__btn">
+        <button
+          id="previous-btn"
+          class="slider__btn"
+          role="link"
+          aria-label="previous image"
+        >
           <i class="fas fa-chevron-left"></i>
         </button>
         <div class="slider__container"></div>
-        <button id="next-btn" class="slider__btn">
-          <i class="fas fa-chevron-right" aria-label="Close dialog"></i>
+        <button
+          id="next-btn"
+          class="slider__btn"
+          role="link"
+          aria-label="next image"
+        >
+          <i class="fas fa-chevron-right"></i>
         </button>
-        <div class="cross-container">
+        <div class="cross-container" role="button" aria-label="close dialog">
           <i id="slider__cross" class="fas fa-times"></i>
         </div>
       </div>

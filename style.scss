@@ -44,7 +44,6 @@ body {
   padding-top: 44px;
   font-family: $font-family;
   width: 100vw;
-  overflow: hidden;
 }
 
 // Style du header
@@ -63,13 +62,14 @@ body {
     width: 100%;
   }
   &__logo {
-    width: 200px;
+    width: 150px;
     position: absolute;
     top: 30px;
-    left: -33px;
+    left: 20px;
     &--photographer {
       position: relative;
-      width: 200px;
+      width: 150px;
+      left: 0px;
     }
   }
   &__nav {
@@ -108,10 +108,6 @@ body {
     background-color: $background-color;
     color: white;
   }
-}
-
-#logo1 {
-  left: 0px;
 }
 
 // Configurer la section "main"
@@ -247,6 +243,10 @@ body {
       margin: 0px 2.5px 0px 2.5px;
       padding: 3px 7px;
       cursor: pointer;
+      &:hover {
+        background-color: $background-color;
+        color: white;
+      }
     }
     &:hover {
       background-color: $background-color;
@@ -256,6 +256,7 @@ body {
 }
 
 .form-photographer {
+  z-index: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -317,7 +318,7 @@ body {
 .list {
   list-style-type: none;
   font-size: 18px;
-  font-weight: 700px;
+  font-weight: 700;
   padding-left: 5px;
   border-radius: 5px;
   &__link--popular {
@@ -361,7 +362,7 @@ body {
   background-color: $color-titre-h1;
   color: white;
   font-size: 18px;
-  font-weight: 700px;
+  font-weight: 700;
   margin-left: 5px;
   border-radius: 5px;
   &:hover {
@@ -531,7 +532,7 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     background-color: white;
   }
@@ -649,6 +650,7 @@ body {
 
 .top-btn {
   display: none;
+  z-index: 10;
   position: fixed;
   top: 6px;
   left: 50%;
@@ -711,14 +713,14 @@ body {
   .btn__speciality {
     height: 22px;
     font-size: 12px;
-    font-weight: 400px;
+    font-weight: 400;
     margin-bottom: 6px;
   }
 
   .header__logo {
     position: absolute;
     top: 30px;
-    left: -22px;
+    left: 20px;
   }
 
   .header__nav {
@@ -783,8 +785,8 @@ body {
 
   .profile-section {
     padding: 0px;
-    margin-top: 100px;
-    margin-bottom: 30px;
+    margin-top: 14px;
+    margin-bottom: 23px;
     background-color: transparent;
   }
 
@@ -877,6 +879,10 @@ body {
   .navigation-filter {
     display: none;
   }
+
+  .top-btn {
+    top: 25px;
+  }
 }
 
 // Empêcher la photo d'écraser le bouton "contactez-moi"
@@ -956,12 +962,27 @@ body {
     &__nav {
       margin-right: 0px;
       margin-left: 200px;
+      padding-right: 20px;
     }
   }
 
   .slider__container {
     height: 70%;
     width: 80%;
+  }
+
+  .form {
+    width: 605px;
+    height: auto;
+    padding: 35px 35px 35px 35px;
+  }
+
+  .form label {
+    font-size: 23px;
+  }
+
+  .form__title {
+    font-size: 39px;
   }
 }
 
