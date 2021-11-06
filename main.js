@@ -51,7 +51,7 @@ if (window.location.pathname === "/index.html") {
 
   for (let i = 0; i < tableTags.length; i++) {
     headerList.innerHTML +=
-      '<li class="btn__speciality" role="link"><span aria-label="tag">' +
+      '<li class="btn__speciality" role="link" tabindex="0"><span aria-label="tag">' +
       tableTags[i] +
       "</span></li>";
   }
@@ -60,13 +60,13 @@ if (window.location.pathname === "/index.html") {
     // Vider la div de class "main"
     main.innerHTML = "";
     //Insérer le titre
-    main.innerHTML = `<h1 class="titre_h1">Nos photographes</h1>
-    <button  role="link" class="top-btn">Passer au contenu</button>`;
+    main.innerHTML = `<h1 class="titre_h1" tabindex="0">Nos photographes</h1>
+    <button  role="link" class="top-btn" tabindex="0">Passer au contenu</button>`;
 
     //Insérer une div de class "profile" destinée à afficher chaque photographe sur la page "index.html"
 
     array.forEach((profil) => {
-      main.innerHTML += `<div class="profile" id="${profil.id}" ></div>`;
+      main.innerHTML += `<div class="profile" id="${profil.id}"></div>`;
     });
 
     // on récupère toutes les div de class "profile"
@@ -76,7 +76,7 @@ if (window.location.pathname === "/index.html") {
     for (let i = 0; i < divProfile.length; i++) {
       divProfile[
         i
-      ].innerHTML += `<form class="form-photographer" action="/photographer.html"><input id="hidden-input" type="hidden" name="id" value=${array[i].id}><img class="profile__img" src="" alt="${array[i].name}" role="img"></img><h2 class="profile__name">exemple</h2></form><p class="profile__location">exemple</p><p class="profile__intro">exemple</p><p class="profile__price"></p><ul class="profile__skills"></ul></input>`;
+      ].innerHTML += `<form class="form-photographer" action="/photographer.html" tabindex="0"><input id="hidden-input" type="hidden" name="id" value=${array[i].id}><img class="profile__img" src="" alt="${array[i].name}" role="img"></img><h2 class="profile__name">exemple</h2></form><p class="profile__location">exemple</p><p class="profile__intro">exemple</p><p class="profile__price"></p><ul class="profile__skills"></ul></input>`;
     }
 
     // Récupérer les éléments du DOM insérés en Javascript
@@ -106,7 +106,7 @@ if (window.location.pathname === "/index.html") {
       array[i].tags.forEach((tag) => {
         profileTag[
           i
-        ].innerHTML += `<li class="profile__tag" aria-label="Tag">#${tag}</li>`;
+        ].innerHTML += `<li class="profile__tag" aria-label="Tag" tabindex="0">#${tag}</li>`;
       });
     }
 
@@ -201,16 +201,16 @@ if (window.location.pathname === "/photographer.html") {
 
   // Editer le HTML en fonction des données du photograph sélèctionné
 
-  profilPic.innerHTML = `<img class="profile__img--photograph" src="./${selectedProfil[0].portrait}" alt="${selectedProfil[0].name}" role="img"></img>`;
-  presentation.innerHTML = `<h1 class="profile__name--photograph">${selectedProfil[0].name}</h1>
-    <p class="profile__location--photograph">${selectedProfil[0].city}, ${selectedProfil[0].country}</p>
-    <p class="profile__intro--photograph">${selectedProfil[0].tagline}</p>
+  profilPic.innerHTML = `<img class="profile__img--photograph" src="./${selectedProfil[0].portrait}" alt="${selectedProfil[0].name}" tabindex="0"></img>`;
+  presentation.innerHTML = `<h1 class="profile__name--photograph" tabindex="0">${selectedProfil[0].name}</h1>
+    <p class="profile__location--photograph" tabindex="0">${selectedProfil[0].city}, ${selectedProfil[0].country}</p>
+    <p class="profile__intro--photograph" tabindex="0">${selectedProfil[0].tagline}</p>
     <ul class="profile__tagslist"></ul>`;
 
   // Ajouter les tags du profil
   const tagslist = document.getElementsByClassName("profile__tagslist")[0];
   selectedProfil[0].tags.forEach((tag) => {
-    tagslist.innerHTML += `<li class="profile__tag--photograph" aria-label="Link">#${tag}</li>`;
+    tagslist.innerHTML += `<li class="profile__tag--photograph" aria-label="Link" tabindex="0">#${tag}</li>`;
   });
 
   document.body.className = "second-body";
@@ -230,14 +230,14 @@ if (window.location.pathname === "/photographer.html") {
     array.forEach((media) => {
       // Si le media représente une image
       if (media.picture) {
-        picturesSection[0].innerHTML += `<div class="pictures__media"><img class = "pictures__pics" src="./pictures/${media.picture}" alt="${media.title}" aria-label="Lilac breasted roller, closeup view" role="img" ></img><div class="pictures__description"><p class="pictures__title">
-          ${media.title}</p><div class="mini-container"><p class="pictures__number"> 
+        picturesSection[0].innerHTML += `<div class="pictures__media"><img class = "pictures__pics" src="./pictures/${media.picture}" alt="${media.title}" aria-label="Lilac breasted roller, closeup view" tabindex="0" ></img><div class="pictures__description"><p class="pictures__title" tabindex="0">
+          ${media.title}</p><div class="mini-container"><p class="pictures__number" tabindex="0"> 
           ${media.likes} 
-          </p><i class="fas fa-heart" aria-label="Likes"></i></div></div></div>`;
+          </p><i class="fas fa-heart" aria-label="Likes" tabindex="0"></i></div></div></div>`;
       } else {
         // Le media représente une vidéo
-        picturesSection[0].innerHTML += `<div class="pictures__media"><video class = "pictures__pics" alt="${media.title}" aria-label="Lilac breasted roller, closeup view" controls><source src="./pictures/${media.video}" type="video/mp4"></video>
-          <div class="pictures__description"><p class="pictures__title">${media.title}</p><div class="mini-container"><p class="pictures__number">${media.likes}</p><i class="fas fa-heart"></i></div></div></div>`;
+        picturesSection[0].innerHTML += `<div class="pictures__media"><video class = "pictures__pics" alt="${media.title}" aria-label="Lilac breasted roller, closeup view" controls tabindex="0"><source src="./pictures/${media.video}" type="video/mp4"></video>
+          <div class="pictures__description"><p class="pictures__title" tabindex="0">${media.title}</p><div class="mini-container"><p class="pictures__number" tabindex="0">${media.likes}</p><i class="fas fa-heart" tabindex="0"></i></div></div></div>`;
       }
     });
     // Afficher le contenu de la balise "aside" en bas de page
@@ -247,8 +247,8 @@ if (window.location.pathname === "/photographer.html") {
       likesCounter += media.likes;
     });
 
-    likesNumber.innerHTML = `<p class="counter__likes__number">${likesCounter}</p>`;
-    price.innerHTML = `<p class="counter__price__text">${selectedProfil[0].price} €/jours</p>`;
+    likesNumber.innerHTML = `<p class="counter__likes__number" tabindex="0">${likesCounter}</p>`;
+    price.innerHTML = `<p class="counter__price__text" tabindex="0">${selectedProfil[0].price} €/jours</p>`;
     // ajouter l'incrémentation des coeurs
     const coeurs = document.getElementsByClassName("fas fa-heart");
     const totalOfLikes = document.getElementsByClassName(
@@ -318,9 +318,9 @@ if (window.location.pathname === "/photographer.html") {
         // Fonction d'affichage de la lightbox
         const renderLightbox = () => {
           if (picturesAndVideos[i].split(".")[1] === "jpg") {
-            container.innerHTML = `<img class="slider__img" src="/pictures/${picturesAndVideos[i]}" alt="${selectedMedias[i].title}" aria-label="Lilac Breasted Roller" role="img"/><h3 class="slider__name">${selectedMedias[i].title}</h3>`;
+            container.innerHTML = `<img class="slider__img" src="/pictures/${picturesAndVideos[i]}" alt="${selectedMedias[i].title}" aria-label="Lilac Breasted Roller" role="img" tabindex="0"/><h3 class="slider__name">${selectedMedias[i].title}</h3>`;
           } else {
-            container.innerHTML = `<video class = "slider__img" alt="${selectedMedias[i].title}" aria-label="Lilac Breasted Roller" controls><source src="./pictures/${picturesAndVideos[i]}" type="video/mp4"><h3 class="slider__name">${selectedMedias[i].title}</h3>`;
+            container.innerHTML = `<video class = "slider__img" alt="${selectedMedias[i].title}" aria-label="Lilac Breasted Roller" controls tabindex="0"><source src="./pictures/${picturesAndVideos[i]}" type="video/mp4"><h3 class="slider__name">${selectedMedias[i].title}</h3>`;
           }
         };
 

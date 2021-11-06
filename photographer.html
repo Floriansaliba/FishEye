@@ -68,8 +68,19 @@
           action="photographer.html"
           aria-hidden="true"
         >
-          <h2 class="form__title" id="modalTitle">Contactez-moi</h2>
-          <label class="form__label-first" id="labelfirst" for="first-name"
+          <h2
+            class="form__title"
+            id="modalTitle"
+            tabindex="0"
+            aria-labelledby="modalTitle"
+          >
+            Contactez-moi
+          </h2>
+          <label
+            class="form__label-first"
+            id="labelfirst"
+            for="first-name"
+            tabindex="0"
             >Prénom</label
           >
           <input
@@ -81,7 +92,11 @@
             aria-required="true"
             aria-labelledby="labelfirst"
           />
-          <label class="form__label-last" id="labellast" for="last-name"
+          <label
+            class="form__label-last"
+            id="labellast"
+            for="last-name"
+            tabindex="0"
             >Nom</label
           >
           <input
@@ -93,7 +108,11 @@
             aria-required="true"
             aria-labelledby="labellast"
           />
-          <label class="form__label-email" id="labelemail" for="email"
+          <label
+            class="form__label-email"
+            id="labelemail"
+            for="email"
+            tabindex="0"
             >Email</label
           >
           <input
@@ -105,7 +124,11 @@
             aria-required="true"
             aria-labelledby="labelemail"
           />
-          <label class="form__label-message" id="labelmessage" for="message"
+          <label
+            class="form__label-message"
+            id="labelmessage"
+            for="message"
+            tabindex="0"
             >Votre message</label
           >
           <input
@@ -129,6 +152,7 @@
             class="fas fa-times"
             role="button"
             aria-label="Close contact form"
+            tabindex="0"
           ></i>
         </form>
       </div>
@@ -136,32 +160,42 @@
 
     <section id="slider-section" aria-hidden="true">
       <div class="slider" aria-label="image closeup view">
-        <button
-          id="previous-btn"
-          class="slider__btn"
-          role="link"
-          aria-label="previous image"
-        >
-          <i class="fas fa-chevron-left"></i>
+        <button id="previous-btn" class="slider__btn" tabindex="-1">
+          <i
+            class="fas fa-chevron-left"
+            aria-label="previous image"
+            tabindex="0"
+          ></i>
         </button>
         <div class="slider__container"></div>
         <button
           id="next-btn"
           class="slider__btn"
-          role="link"
           aria-label="next image"
+          tabindex="-1"
         >
-          <i class="fas fa-chevron-right"></i>
+          <i
+            class="fas fa-chevron-right"
+            role="button"
+            aria-label="next image"
+            tabindex="0"
+          ></i>
         </button>
-        <div class="cross-container" role="button" aria-label="close dialog">
-          <i id="slider__cross" class="fas fa-times"></i>
+        <div class="cross-container">
+          <i
+            id="slider__cross"
+            class="fas fa-times"
+            role="button"
+            aria-label="close dialog"
+            tabindex="0"
+          ></i>
         </div>
       </div>
     </section>
 
     <aside class="counter">
       <div class="counter__likes"></div>
-      <p class="counter__heart"><i class="fas fa-heart"></i></p>
+      <p class="counter__heart"><i class="fas fa-heart" tabindex="0"></i></p>
       <div class="counter__price-bis"></div>
     </aside>
     <script src="./main.js" type="module"></script>
