@@ -304,7 +304,7 @@ if (window.location.pathname === "/pages/photographer.html") {
       const previousBtn = document.getElementById("previous-btn");
       const container = document.getElementsByClassName("slider__container")[0];
 
-      // ouverture de la lightbox
+      // Dissocier les vidéos des images
 
       for (let i = 0; i < photographerPictures.length; i++) {
         let picturesAndVideos = selectedMedias.map((media) => {
