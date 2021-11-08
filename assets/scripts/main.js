@@ -33,7 +33,7 @@ const mediaTable = source.media.map((media) => {
 
 /////////////////////////////// PAGE D'ACCEUIL ////////////////////////////////////////////
 
-if (window.location.pathname === "/pages/index.html") {
+if (window.location.pathname === "/index.html") {
   // Récupérer l'élément du DOM sur lequel je souhaite créer les profils des photographes
   let main = document.getElementsByClassName("main")[0];
 
@@ -76,7 +76,7 @@ if (window.location.pathname === "/pages/index.html") {
     for (let i = 0; i < divProfile.length; i++) {
       divProfile[
         i
-      ].innerHTML += `<form class="form-photographer" action="../pages/photographer.html" tabindex="0"><input id="hidden-input" type="hidden" name="id" value=${array[i].id}><img class="profile__img" src="" alt="${array[i].name}" role="img"></img><h2 class="profile__name">exemple</h2></form><p class="profile__location">exemple</p><p class="profile__intro">exemple</p><p class="profile__price"></p><ul class="profile__skills"></ul></input>`;
+      ].innerHTML += `<form class="form-photographer" action="./photographer.html" tabindex="0"><input id="hidden-input" type="hidden" name="id" value=${array[i].id}><img class="profile__img" src="" alt="${array[i].name}" role="img"></img><h2 class="profile__name">exemple</h2></form><p class="profile__location">exemple</p><p class="profile__intro">exemple</p><p class="profile__price"></p><ul class="profile__skills"></ul></input>`;
     }
 
     // Récupérer les éléments du DOM insérés en Javascript
@@ -181,7 +181,7 @@ if (window.location.pathname === "/pages/index.html") {
 
 /////////////////////////////////////// PAGE PHOTOGRAPHE //////////////////////////////////////
 
-if (window.location.pathname === "/pages/photographer.html") {
+if (window.location.pathname === "/photographer.html") {
   // Récupérer les éléments du DOM
   let profilPic = document.getElementsByClassName("profil-pic")[0];
   let presentation = document.getElementsByClassName("presentation")[0];
