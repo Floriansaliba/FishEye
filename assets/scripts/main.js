@@ -227,6 +227,7 @@ if (window.location.pathname === "/photographer.html") {
     // Vider la section "pictures"
     picturesSection[0].innerHTML = "";
 
+
     array.forEach((media) => {
       // Si le media représente une image
       if (media.picture) {
